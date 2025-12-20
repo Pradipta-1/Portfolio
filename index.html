@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -245,12 +246,16 @@ I am continuously learning new concepts, improving my existing skills, and worki
     function loadPhoto(event) {
         const img = document.getElementById("profilePic");
         const uploadBox = document.querySelector(".photo-upload");
+        const fileInput = document.getElementById("upload");
 
         img.src = URL.createObjectURL(event.target.files[0]);
         img.style.display = "block";
 
-        // hide upload button after image upload
+        // Hide upload button
         uploadBox.style.display = "none";
+
+        // Disable file input completely
+        fileInput.disabled = true;
     }
 </script>
 

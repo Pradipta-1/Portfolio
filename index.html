@@ -289,6 +289,70 @@ section {
     color: var(--secondary);
     margin-bottom: 1rem;
 }
+/* ================= PROJECTS ================= */
+.projects-grid {
+    display: grid;
+    justify-content: center;
+}
+
+.project-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 20px;
+    max-width: 600px;
+    text-align: center;
+    transition: 0.4s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    background: #26354a;
+}
+
+/* BLUE PROJECT NAME */
+.project-card h3 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+.project-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.project-title span {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-weight: normal;
+    opacity: 0.9;
+}
+.project-title span {
+    font-size: 0.65rem;
+    font-weight: normal;
+    animation: clickColor 2s infinite alternate;
+}
+
+/* Color changing animation */
+@keyframes clickColor {
+    0% {
+        color: #38bdf8; /* blue */
+    }
+    50% {
+        color: #6c63ff; /* violet */
+    }
+    100% {
+        color: #22d3ee; /* cyan */
+    }
+}
+
+
+
 
 /* ================= FOOTER ================= */
 footer {
@@ -333,6 +397,7 @@ footer {
         <li><a href="#about" onclick="toggleMenu()">About</a></li>
         <li><a href="#education" onclick="toggleMenu()">Education</a></li>
         <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
         <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
     </ul>
 </nav>
@@ -396,6 +461,31 @@ footer {
         </div>
     </div>
 </section>
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 class="section-title hidden">Projects</h2>
+
+    <div class="projects-grid">
+        <a href="https://pradipta-1.github.io/flappy/" target="_blank" class="project-link">
+            <div class="project-card hidden">
+                <h3 class="project-title">
+                Deep Sea Runner
+              <span>(click here)</span>
+               </h3>
+
+                <p>
+                    A browser-based interactive game where the player navigates
+                    through deep-sea environments, avoids obstacles, and tries
+                    to achieve high scores.
+                </p>
+                <p style="margin-top:1rem; font-size:0.9rem; color:#94a3b8;">
+                    Tech Used: HTML, CSS, JavaScript
+                </p>
+            </div>
+        </a>
+    </div>
+</section>
+
 
 <!-- FOOTER -->
 <footer id="contact">

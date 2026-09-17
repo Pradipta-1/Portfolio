@@ -588,12 +588,14 @@ section {
     gap: 2.5rem;
     max-width: 1400px;
     margin: auto;
+    align-items: stretch;
 }
 
 .project-link {
     text-decoration: none;
     color: inherit;
-    display: block;
+    display: flex;
+    height: 100%;
 }
 
 .project-card {
@@ -604,8 +606,12 @@ section {
     border: 1px solid rgba(56, 189, 248, 0.1);
     box-shadow: 0 10px 40px rgba(0,0,0,0.3);
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
 }
 
 .project-card:hover {
@@ -617,15 +623,18 @@ section {
 .project-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(108, 99, 255, 0.1));
     opacity: 0;
     transition: opacity 0.4s;
-    border-radius: 24px;
-    z-index: -1;
+    border-radius: inherit;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.project-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .project-card:hover::before {
@@ -842,7 +851,7 @@ footer p:last-child {
     <p class="hero-subtitle hidden">Student • <span class="typing" id="typewriter"></span></p>
     <div class="hero-stats hidden">
         <div class="stat-item" onclick="document.querySelector('#projects').scrollIntoView({behavior: 'smooth'})">
-            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-number" data-target="4">0</span>
             <span class="stat-label">Projects</span>
         </div>
         <div class="stat-item" onclick="document.querySelector('#skills').scrollIntoView({behavior: 'smooth'})">
@@ -921,6 +930,24 @@ footer p:last-child {
 
     <div class="projects-container">
         <!-- Project 1 -->
+        <a href="https://pradipta-1.github.io/DSA-Visualizer/" target="_blank" rel="noopener noreferrer" class="project-link">
+            <div class="project-card hidden">
+                <h3>
+                    <span class="project-name">DSA Visualizer</span>
+                    <span class="click-hint"><i class="fas fa-external-link-alt"></i> Visit</span>
+                </h3>
+                <p>
+                    An interactive learning tool for understanding Data Structures and Algorithms through step-by-step animations, code tracing, theory, and complexity analysis. It helps learners visualize how algorithms and data structures work instead of only seeing the final output.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Project 2 -->
         <a href="https://foodie-haven-frontend.onrender.com" target="_blank" rel="noopener noreferrer" class="project-link">
             <div class="project-card hidden">
                 <h3>
@@ -939,7 +966,7 @@ footer p:last-child {
             </div>
         </a>
 
-        <!-- Project 2 -->
+        <!-- Project 3 -->
         <a href="https://pradipta-1.github.io/IplAuctionGame/" target="_blank" rel="noopener noreferrer" class="project-link">
             <div class="project-card hidden">
                 <h3>
@@ -957,7 +984,7 @@ footer p:last-child {
             </div>
         </a>
 
-        <!-- Project 3 -->
+        <!-- Project 4 -->
         <a href="https://pradipta-1.github.io/flappy/" target="_blank" rel="noopener noreferrer" class="project-link">
             <div class="project-card hidden">
                 <h3>
@@ -973,7 +1000,6 @@ footer p:last-child {
                     <span class="tech-tag">JavaScript</span>
                 </div>
             </div>
-        </div>
         </a>
     </div>
 </section>

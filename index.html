@@ -498,7 +498,7 @@
       object-fit: cover;
       object-position: center;
       border-radius: 50%;
-      filter: grayscale(1);
+      filter: none;
       border: var(--border-lg) solid var(--fg);
       box-shadow: var(--shadow-md);
       background: var(--muted);
@@ -507,7 +507,7 @@
 
     .profile-trigger:hover .hero-profile,
     .profile-trigger:focus-visible .hero-profile {
-      filter: grayscale(0);
+      filter: none;
       transform: scale(1.03) rotate(-2deg);
       box-shadow: var(--shadow-lg);
     }
@@ -941,18 +941,83 @@
       border: var(--border-sm) solid var(--fg);
     }
 
-    .project-geometry .c { width: 62px; height: 62px; left: 2px; top: 10px; border-radius: 50%; background: var(--yellow); }
-    .project-geometry .s { width: 54px; height: 54px; left: 48px; top: 0; background: var(--blue); transform: rotate(45deg); }
-    .project-geometry .t {
-      width: 0;
-      height: 0;
-      left: 98px;
-      top: 10px;
-      border: 0;
+    /* Each project gets its own geometric composition so the cards feel individually designed. */
+    .project-geometry .c,
+    .project-geometry .s {
+      box-shadow: 3px 3px 0 var(--fg);
+    }
+
+    /* 01 — DSA Visualizer: compact horizontal progression */
+    .project-card:nth-child(1) .project-geometry .c {
+      width: 58px; height: 58px; left: 4px; top: 18px;
+      border-radius: 50%; background: var(--yellow);
+    }
+    .project-card:nth-child(1) .project-geometry .s {
+      width: 48px; height: 48px; left: 70px; top: 5px;
+      background: var(--blue); transform: rotate(18deg);
+    }
+    .project-card:nth-child(1) .project-geometry .t {
+      width: 0; height: 0; left: 150px; top: 24px; border: 0;
+      border-left: 28px solid transparent;
+      border-right: 28px solid transparent;
+      border-bottom: 48px solid var(--red);
+      filter: drop-shadow(2px 2px 0 var(--fg));
+      transform: rotate(90deg);
+    }
+
+    /* 02 — Foodie Haven: stacked/overlapping composition */
+    .project-card:nth-child(2) .project-geometry .c {
+      width: 52px; height: 52px; right: 14px; left: auto; top: 8px;
+      border-radius: 50%; background: var(--red);
+    }
+    .project-card:nth-child(2) .project-geometry .s {
+      width: 58px; height: 58px; left: 28px; top: 15px;
+      background: var(--white); transform: rotate(-28deg);
+    }
+    .project-card:nth-child(2) .project-geometry .t {
+      width: 0; height: 0; left: 98px; top: 2px; border: 0;
+      border-left: 34px solid transparent;
+      border-right: 34px solid transparent;
+      border-bottom: 58px solid var(--blue);
+      filter: drop-shadow(2px 2px 0 var(--fg));
+      transform: rotate(180deg);
+    }
+
+    /* 03 — IPL Auction Game: wide, diagonal composition */
+    .project-card:nth-child(3) .project-geometry .c {
+      width: 48px; height: 48px; left: 48%; top: 2px;
+      border-radius: 50%; background: var(--yellow);
+      transform: translateX(-50%);
+    }
+    .project-card:nth-child(3) .project-geometry .s {
+      width: 52px; height: 52px; right: 28px; left: auto; top: 22px;
+      background: var(--blue); transform: rotate(62deg);
+    }
+    .project-card:nth-child(3) .project-geometry .t {
+      width: 0; height: 0; left: 12px; top: 12px; border: 0;
+      border-left: 26px solid transparent;
+      border-right: 26px solid transparent;
+      border-bottom: 46px solid var(--white);
+      filter: drop-shadow(2px 2px 0 var(--fg));
+      transform: rotate(-18deg);
+    }
+
+    /* 04 — Deep Sea Runner: large foreground square with offset shapes */
+    .project-card:nth-child(4) .project-geometry .c {
+      width: 46px; height: 46px; right: 18px; left: auto; top: 20px;
+      border-radius: 50%; background: var(--blue);
+    }
+    .project-card:nth-child(4) .project-geometry .s {
+      width: 62px; height: 62px; left: 14px; top: 4px;
+      background: var(--yellow); transform: rotate(-8deg);
+    }
+    .project-card:nth-child(4) .project-geometry .t {
+      width: 0; height: 0; left: 110px; top: 20px; border: 0;
       border-left: 30px solid transparent;
       border-right: 30px solid transparent;
       border-bottom: 52px solid var(--red);
       filter: drop-shadow(2px 2px 0 var(--fg));
+      transform: rotate(25deg);
     }
 
     .project-card h3 {
@@ -1358,7 +1423,7 @@
       border: var(--border-lg) solid var(--fg);
       border-radius: 50%;
       object-fit: cover;
-      filter: grayscale(1);
+      filter: none;
       box-shadow: var(--shadow-lg);
     }
 
@@ -2285,7 +2350,16 @@
       .project-geometry {
         height: 76px;
         margin: 12px 0 15px;
+        overflow: hidden;
       }
+
+      .project-card:nth-child(1) .project-geometry .s { width: 44px; height: 44px; left: 56px; }
+      .project-card:nth-child(1) .project-geometry .t { left: 128px; }
+      .project-card:nth-child(2) .project-geometry .s { width: 50px; height: 50px; left: 22px; }
+      .project-card:nth-child(2) .project-geometry .t { left: 84px; }
+      .project-card:nth-child(3) .project-geometry .s { width: 46px; height: 46px; right: 18px; }
+      .project-card:nth-child(4) .project-geometry .s { width: 54px; height: 54px; left: 10px; }
+      .project-card:nth-child(4) .project-geometry .t { left: 92px; }
 
       .project-card h3 {
         font-size: clamp(1.75rem, 8.5vw, 2.6rem);

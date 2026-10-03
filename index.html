@@ -498,16 +498,18 @@
       object-fit: cover;
       object-position: center;
       border-radius: 50%;
-      filter: none;
+      filter: none !important;
+      -webkit-filter: none !important;
       border: var(--border-lg) solid var(--fg);
       box-shadow: var(--shadow-md);
       background: var(--muted);
-      transition: filter var(--ease), box-shadow var(--ease), transform var(--ease);
+      transition: box-shadow var(--ease), transform var(--ease);
     }
 
     .profile-trigger:hover .hero-profile,
     .profile-trigger:focus-visible .hero-profile {
-      filter: none;
+      filter: none !important;
+      -webkit-filter: none !important;
       transform: scale(1.03) rotate(-2deg);
       box-shadow: var(--shadow-lg);
     }
@@ -1423,7 +1425,8 @@
       border: var(--border-lg) solid var(--fg);
       border-radius: 50%;
       object-fit: cover;
-      filter: none;
+      filter: none !important;
+      -webkit-filter: none !important;
       box-shadow: var(--shadow-lg);
     }
 
@@ -3089,6 +3092,12 @@
     // The email links keep their native mailto behavior; no custom context-menu handling.
 
 
+
+    // Always keep profile photos in their original colors.
+    document.querySelectorAll('.hero-profile, #modalProfileImage').forEach(img => {
+      img.style.setProperty('filter', 'none', 'important');
+      img.style.setProperty('-webkit-filter', 'none', 'important');
+    });
 
     // Graceful fallback when the local profile image is missing.
     document.querySelectorAll('img[src="profile.jpg"]').forEach(img => {
